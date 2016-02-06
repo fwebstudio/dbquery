@@ -4,7 +4,6 @@
  *
  * @package    	Web Development Frameworks
  * @author     	Gilang <gilang@kresnadi.web.id>
- * @License    	Free GPL
  * @link 		http://www.kresnadi.web.id
  */
 

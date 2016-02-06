@@ -4,8 +4,7 @@
  *
  * @package    	Web Development Frameworks
  * @author     	Gilang <gilang@kresnadi.web.id>
- * @License    	Free GPL
- * @link 		http://www.kresnadi.web.id
+ * @link 	http://www.kresnadi.web.id
  */
 
 /*
@@ -50,49 +49,6 @@ $tpl->cache_dir    		= ROOT_PATH.'/cache/';
 **                       - Get total buy
 **                       - Count total balance
 ***********************************************************************************/
-function balanceInfo($UserName) {
-	global $DB,$LoginUser,$branch;
-
-	if (LevelAccess($LoginUser,L_Investor)) $Af=" AND c.c_ref='$LoginUser'";
-	// Get all payment
-	$qtxt = "SELECT SUM(a.c_jumlah) ".
-			"FROM t_payment a, t_paymentType b, t_users c ".
-			"WHERE a.ref_branch = '$branch' AND a.ref_bank=b.id AND a.ref_users=c.id ".
-			"AND c.c_username='$UserName' $Af ";
-	//print "$qtxt<br>\n";
-	$result = $DB->Execute($qtxt);
-	if (!$result) QERR(__FILE__,__LINE__,$qtxt);
-	//while (!$result->EOF) {
-	//      $payTotal+=$result->fields[0];
-	//      $result->MoveNext();
-	//}
-	$payTotal = $result->fields[0];
-
-	// Get all buy voucher
-	$qtxt = "SELECT b.c_sgd_price,a.c_price ".
-			"FROM t_voucher a, t_vouchertype b, t_users c, t_vendor d ".
-			"WHERE a.ref_vouchertype=b.id AND a.ref_users=c.id ".
-			"AND c.c_username='$UserName' $Af ".
-			"AND b.ref_vendor=d.id ".
-			"AND (a.ref_status=5 OR a.ref_status=1) ";
-	//print "<!--$qtxt-->\n";
-	$result = $DB->Execute($qtxt);
-	if (!$result) QERR(__FILE__,__LINE__,$qtxt);
-	while (!$result->EOF) {
-		if ($result->fields[1]>0) $Price=$result->fields[1];
-		else $Price=$result->fields[0];
-		$buyTotal+=$Price;
-		$result->MoveNext();
-	}
-
-	$Balance = $payTotal-$buyTotal;
-	return array(number_format($payTotal/100,2,".",","),
-			number_format($buyTotal/100,2,".",","),
-			number_format($Balance/100,2,".",","), $Balance);
-}
-
-
-
 $conf = array("db" 		=> array("user" 		=> "root", 			//Ganti dengan userDB
 								 "pass" 		=> "password", 		//Ganti dengan passDB
 								 "database" 	=> "yourdbname",		//Ganti dengan namaDB
