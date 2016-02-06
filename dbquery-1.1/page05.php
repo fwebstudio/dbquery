@@ -4,7 +4,7 @@
  *
  * @package    	Web Development Frameworks
  * @author     	Gilang <gilang@kresnadi.web.id>
- * @link 		http://www.kresnadi.web.id
+ * @link 	http://www.kresnadi.web.id
  */
 
 include_once 'configure.php';
