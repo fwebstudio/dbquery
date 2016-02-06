@@ -1,0 +1,18 @@
+/**
+ * Installation Manual
+ *
+ * @package    	Web Development Frameworks
+ * @author     	Gilang <gilang@kresnadi.web.id>
+ * @License    	Free GPL
+ * @link 	http://www.kresnadi.web.id
+ */
+
+1. Extract file : dbquery-1.1.zip
+2. Copy folder dbquery-1.1 hasil extract ke folder webserver (untuk xampp/windows biasanya di X:/xampp/htdocs, di linux biasanya /var/www)
+3. Dump file dbquery.sql ke database mysql server
+4. Edit konfigurasi : configure.php sesuai dengan setting webserver/database server anda.
+
+Untuk keterangan lebih lanjut hubungi :
+----------------------------------------
+email : gilang@kresnadi.web.id
+Websites : http://www.kresnadi.web.id
